@@ -23,8 +23,9 @@ public class main {
                         + "3. Remove item init to list\n "
                         + "4. Remove item final to list\n "
                         + "5. Remove item specific to list\n "
-                        + "6. Show data list\n "
-                        + "7. Exit", 
+                        + "6. Search item specific to list\n "
+                        + "7. Show data list\n "
+                        + "8. Exit", 
                         "Menu option"));
                 
                 switch(Option) {
@@ -72,19 +73,46 @@ public class main {
                         Username = JOptionPane.showInputDialog(null, 
                                 "Enter username delete...", 
                                 "Delete item specific", 
-                                JOptionPane.INFORMATION_MESSAGE);                         
-                        list.deleteNode(Username);
-                        JOptionPane.showMessageDialog(null, 
-                                "Item delete: " + Username, 
-                                "Delete node", 
-                                JOptionPane.INFORMATION_MESSAGE); 
+                                JOptionPane.INFORMATION_MESSAGE);
+                        if(list.existList(Username)) {
+                            list.deleteNode(Username);
+                            JOptionPane.showMessageDialog(null, 
+                                    "Item delete: " + Username, 
+                                    "Delete node", 
+                                    JOptionPane.INFORMATION_MESSAGE); 
+                        } else {
+                            JOptionPane.showMessageDialog(null, 
+                                "Item: " + Username, 
+                                "No exist", 
+                                JOptionPane.WARNING_MESSAGE); 
+                        }
+                        
                         break;
                         
                     case 6:
-                        list.getList();
+                        Username = JOptionPane.showInputDialog(null, 
+                                "Enter username search...", 
+                                "Search item specific", 
+                                JOptionPane.INFORMATION_MESSAGE); 
+                        if(list.existList(Username)) {
+                            JOptionPane.showMessageDialog(null, 
+                                "Item: " + Username, 
+                                "Exist", 
+                                JOptionPane.INFORMATION_MESSAGE); 
+                        } else {
+                            JOptionPane.showMessageDialog(null, 
+                                "Item: " + Username, 
+                                "No exist", 
+                                JOptionPane.WARNING_MESSAGE); 
+                        }
+                        
                         break;
                         
                     case 7:
+                        list.getList();
+                        break;
+                        
+                    case 8:
                         break;
                         
                     default:
@@ -94,7 +122,7 @@ public class main {
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        } while(Option != 7);
+        } while(Option != 8);
     }
     
 }

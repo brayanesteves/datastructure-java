@@ -145,4 +145,15 @@ public class List {
             }
         }
     }
+    
+    /**
+     * Method. Search item to node
+     */
+    public boolean existList(String item) {
+        Node temp = this.Init;
+        while(temp != null && !temp.Username.equals(item)) {
+            temp = temp.Next;
+        }
+        return temp != null;
+    }
 }
