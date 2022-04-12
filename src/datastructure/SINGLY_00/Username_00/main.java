@@ -17,7 +17,13 @@ public class main {
         String Username;
         do {
             try {
-                Option = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Add item init to list\n 2. Add item final to list\n 3. Show data list\n 4. Exit", "Menu option"));
+                Option = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                          "1. Add item init to list\n "
+                        + "2. Add item final to list\n "
+                        + "3. Remove item init to list\n "
+                        + "4. Show data list\n "
+                        + "5. Exit", 
+                        "Menu option"));
                 
                 switch(Option) {
                     case 1:
@@ -45,10 +51,18 @@ public class main {
                         break;
                         
                     case 3:
-                        list.getList();
+                        Username = list.deleteInit();
+                        JOptionPane.showMessageDialog(null, 
+                                "Item delete: " + Username, 
+                                "Delete node init", 
+                                JOptionPane.INFORMATION_MESSAGE);                        
                         break;
                         
                     case 4:
+                        list.getList();
+                        break;
+                        
+                    case 5:
                         break;
                         
                     default:
@@ -58,7 +72,7 @@ public class main {
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        } while(Option != 3);
+        } while(Option != 5);
     }
     
 }

@@ -39,7 +39,7 @@ public class List {
             this.Final.Next = new Node(item);
             this.Final      = this.Final.Next;
         } else {
-            this.Init  = this.Final;
+            this.Init  = new Node(item);
             this.Final = new Node(item);
         }
     }
@@ -71,5 +71,20 @@ public class List {
             System.out.print("[" + iterate.Username + "]==>");
             iterate = iterate.Next;
         }
+    }
+    
+    /**
+     * Method. Delete 'node' to init
+     */
+    public String deleteInit(){
+        String item = this.Init.Username;
+        if(this.Init == this.Final) {
+            this.Init  = null;
+            this.Final = null;
+        } else {
+            this.Init = this.Init.Next;            
+        }
+        
+        return item;
     }
 }
