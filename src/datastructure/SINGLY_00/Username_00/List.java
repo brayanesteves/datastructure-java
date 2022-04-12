@@ -110,4 +110,39 @@ public class List {
         
         return item;
     }
+    
+    /**
+     * Method. Delete 'node' specific
+     */
+    public void deleteNode(String item) {
+        if(!isEmpty()) {
+            if(this.Init == this.Final && item.equals(this.Init.Username)) {
+                this.Init  = null;
+                this.Final = null;
+            } else if(item.equals(this.Init.Username)) {
+                this.Init = this.Init.Next;
+            } else {
+                Node last;
+                Node temp;
+                
+                last = this.Init;
+                temp = this.Init.Next;
+                
+                /**
+                 * Iterate list
+                 */
+                while(temp != null && !temp.Username.equals(item)) {
+                    last = last.Next;
+                    temp = temp.Next;
+                }
+                
+                if(temp != null) {
+                    last.Next = temp.Next;
+                    if(temp == this.Final) {
+                        this.Final = last;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -22,8 +22,9 @@ public class main {
                         + "2. Add item final to list\n "
                         + "3. Remove item init to list\n "
                         + "4. Remove item final to list\n "
-                        + "5. Show data list\n "
-                        + "6. Exit", 
+                        + "5. Remove item specific to list\n "
+                        + "6. Show data list\n "
+                        + "7. Exit", 
                         "Menu option"));
                 
                 switch(Option) {
@@ -68,10 +69,22 @@ public class main {
                         break;
                         
                     case 5:
-                        list.getList();
+                        Username = JOptionPane.showInputDialog(null, 
+                                "Enter username delete...", 
+                                "Delete item specific", 
+                                JOptionPane.INFORMATION_MESSAGE);                         
+                        list.deleteNode(Username);
+                        JOptionPane.showMessageDialog(null, 
+                                "Item delete: " + Username, 
+                                "Delete node", 
+                                JOptionPane.INFORMATION_MESSAGE); 
                         break;
                         
                     case 6:
+                        list.getList();
+                        break;
+                        
+                    case 7:
                         break;
                         
                     default:
@@ -81,7 +94,7 @@ public class main {
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        } while(Option != 6);
+        } while(Option != 7);
     }
     
 }
