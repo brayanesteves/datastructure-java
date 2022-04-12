@@ -17,14 +17,14 @@ public class main {
         String Username;
         do {
             try {
-                Option = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Add item init to list\n 2. Show data list\n 3. Exit", "Menu option"));
+                Option = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Add item init to list\n 2. Add item final to list\n 3. Show data list\n 4. Exit", "Menu option"));
                 
                 switch(Option) {
                     case 1:
                         try {
                             Username = JOptionPane.showInputDialog(null, "Enter username:", "Add init", 3);
                             /**
-                             * Add to 'node'
+                             * Add init to 'node'
                              */
                             list.addInit(Username);
                         } catch(StringIndexOutOfBoundsException e) {
@@ -33,10 +33,22 @@ public class main {
                         break;
                         
                     case 2:
-                        list.getList();
+                        try {
+                            Username = JOptionPane.showInputDialog(null, "Enter username:", "Add init", 3);
+                            /**
+                             * Add final to 'node'
+                             */
+                            list.addFinal(Username);
+                        } catch(StringIndexOutOfBoundsException e) {
+                            JOptionPane.showMessageDialog(null, e.getMessage());
+                        }
                         break;
                         
                     case 3:
+                        list.getList();
+                        break;
+                        
+                    case 4:
                         break;
                         
                     default:

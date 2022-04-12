@@ -21,6 +21,30 @@ public class List {
     }
     
     /**
+     * Method if list empty
+     */
+    public boolean isEmpty() {
+        if(this.Init == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Method add final list
+     */
+    public void addFinal(String item) {
+        if(!isEmpty()) {
+            this.Final.Next = new Node(item);
+            this.Final      = this.Final.Next;
+        } else {
+            this.Init  = this.Final;
+            this.Final = new Node(item);
+        }
+    }
+    
+    /**
      * Method add 'node' to init list
      */
     public void addInit(String item) {

@@ -18,6 +18,7 @@ public class Node {
      */
     public Node(String Username) {
         this.Username = Username;
+        this.Next     = null;
     }
     
     /**
