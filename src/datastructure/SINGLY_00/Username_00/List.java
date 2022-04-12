@@ -87,4 +87,27 @@ public class List {
         
         return item;
     }
+    
+    /**
+     * Method. Delete 'node' to final
+     */
+    public String deleteFinal(){
+        String item = this.Final.Username;
+        if(this.Init == this.Final) {
+            this.Init  = null;
+            this.Final = null;
+        } else {
+            /**
+             * Iterate list
+             */
+            Node nodeTemp = this.Init;
+            while(nodeTemp.Next != this.Final) {
+                nodeTemp = nodeTemp.Next;    
+            }   
+            this.Final      = nodeTemp;
+            this.Final.Next = null;
+        }
+        
+        return item;
+    }
 }
