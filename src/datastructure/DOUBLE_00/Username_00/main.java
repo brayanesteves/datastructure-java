@@ -55,11 +55,28 @@ public class main {
                         break;
                         
                     case 3:
-                                               
+                        if(!list.isEmpty()) {
+                            Username = list.deleteInit();
+                            JOptionPane.showMessageDialog(null, 
+                                "Item delete: " + Username, 
+                                "Delete node init", 
+                                JOptionPane.INFORMATION_MESSAGE);  
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No exist node");
+                        }     
+                                         
                         break;
                     
                     case 4:
-                                              
+                        if(!list.isEmpty()) {
+                            Username = list.deleteFinal();
+                            JOptionPane.showMessageDialog(null, 
+                                    "Item delete: " + Username, 
+                                    "Delete node final", 
+                                    JOptionPane.INFORMATION_MESSAGE);    
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No exist node");
+                        }          
                         break;
                         
                     case 5:

@@ -93,5 +93,84 @@ public class List {
         
     }
     
+        
+    /**
+     * Method. Delete 'node' to init
+     */
+    public String deleteInit(){
+        String item = this.Init.Username;
+        if(this.Init == this.Final) {
+            this.Init  = null;
+            this.Final = null;
+        } else {
+            this.Init          = this.Init.Next;  
+            this.Init.Previous = null;  
+        }
+        
+        return item;
+    }
+    
+    /**
+     * Method. Delete 'node' to final
+     */
+    public String deleteFinal(){
+        String item = this.Init.Username;
+        if(this.Init == this.Final) {
+            this.Init  = null;
+            this.Final = null;
+        } else {
+            this.Init       = this.Final.Previous;
+            this.Final.Next = null;
+        }
+        
+        return item;
+    }
+    
+    /**
+     * Method. Delete 'node' specific
+     */
+    public void deleteNode(String item) {
+        if(!isEmpty()) {
+            if(this.Init == this.Final && item.equals(this.Init.Username)) {
+                this.Init  = null;
+                this.Final = null;
+            } else if(item.equals(this.Init.Username)) {
+                this.Init = this.Init.Next;
+            } else {
+                Node last;
+                Node temp;
+                
+                last = this.Init;
+                temp = this.Init.Next;
+                
+                /**
+                 * Iterate list
+                 */
+                while(temp != null && !temp.Username.equals(item)) {
+                    last = last.Next;
+                    temp = temp.Next;
+                }
+                
+                if(temp != null) {
+                    last.Next = temp.Next;
+                    if(temp == this.Final) {
+                        this.Final = last;
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Method. Search item to node
+     */
+    public boolean existList(String item) {
+        Node temp = this.Init;
+        while(temp != null && !temp.Username.equals(item)) {
+            temp = temp.Next;
+        }
+        return temp != null;
+    }
+    
     
 }
