@@ -47,4 +47,33 @@ public class List {
                 "Show list circle", 
                 JOptionPane.INFORMATION_MESSAGE);
     }
+    
+        /**
+     * Method. Delete 'node' specific
+     */
+    public boolean delete(String item) {        
+        Node current;
+        boolean found = false;
+        current       = this.Last; 
+        while(current.Next != this.Last && !found) {
+            found = (current.Next.Username.equals(item));
+            if(!found) {
+                current = current.Next;
+            }
+        }
+        found = (current.Next.Username.equals(item));
+        if(found) {
+            Node auxiliary = current.Next;
+            if(this.Last == this.Last.Next) {
+                this.Last = null;
+            } else {
+                if(auxiliary == this.Last) {
+                    this.Last = current;
+                }
+                current.Next = auxiliary.Next;
+            }
+            auxiliary = null;
+        }
+        return found == true;
+    }
 }

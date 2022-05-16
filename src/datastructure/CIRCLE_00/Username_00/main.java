@@ -15,6 +15,7 @@ public class main {
         List list = new List();
         int Option = 0;
         String Username;
+        boolean removed = false;
         do {
             try {
                 Option = Integer.parseInt(JOptionPane.showInputDialog(null, 
@@ -39,7 +40,20 @@ public class main {
                         break;
                         
                     case 2:
-
+                        if(!list.isEmpty()) {
+                            Username = JOptionPane.showInputDialog(null, "Enter username to delete:", "Delete node list circle", JOptionPane.INFORMATION_MESSAGE);
+                            /**
+                             * Delete init to 'node'
+                             */
+                            removed = list.delete(Username);
+                            if(removed) {
+                                JOptionPane.showMessageDialog(null, "Item " + Username + " removed");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Item not exist");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No exist node");
+                        }
                         break;
                         
                     case 3:
