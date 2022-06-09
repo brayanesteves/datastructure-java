@@ -24,7 +24,7 @@ public class main {
                           "1. Add node\n"
                         + "2. Iterate tree 'inOrder'\n"
                         + "3. Iterate tree 'preOrder'\n"
-                        + "4. \n"
+                        + "4. Iterate tree 'postOrder'\n"
                         + "5. \n"
                         + "6. \n"
                         + "7. Exit", 
@@ -57,7 +57,11 @@ public class main {
                         break;
                     
                     case 4:
-                             
+                        if(!treeBit.isEmpty()) {
+                            treeBit.postOrder(treeBit.root);
+                        } else {
+                            JOptionPane.showInputDialog(null, "Tree Bit empty");
+                        }      
                         break;
                         
                     case 5:

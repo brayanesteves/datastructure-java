@@ -69,4 +69,17 @@ public class TreeBit {
             preOrder(root.childRight);
         }
     }
+        
+    /**
+     * Iterate 'postOrder'
+     * @param root 
+     */
+    public void postOrder(Node root) {
+        if(root != null) {            
+            postOrder(root.childLeft);            
+            postOrder(root.childRight);
+            System.out.println(root.Data);
+        }
+    }
+    
 }
