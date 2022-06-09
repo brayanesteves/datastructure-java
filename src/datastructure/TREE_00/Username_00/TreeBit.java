@@ -57,4 +57,16 @@ public class TreeBit {
             inOrder(root.childRight);
         }
     }
+    
+    /**
+     * Iterate 'preOrder'
+     * @param root 
+     */
+    public void preOrder(Node root) {
+        if(root != null) {
+            System.out.println(root.Data);
+            preOrder(root.childLeft);            
+            preOrder(root.childRight);
+        }
+    }
 }

@@ -23,7 +23,7 @@ public class main {
                 Option = Integer.parseInt(JOptionPane.showInputDialog(null, 
                           "1. Add node\n"
                         + "2. Iterate tree 'inOrder'\n"
-                        + "3. \n"
+                        + "3. Iterate tree 'preOrder'\n"
                         + "4. \n"
                         + "5. \n"
                         + "6. \n"
@@ -49,7 +49,11 @@ public class main {
                         break;
                         
                     case 3:                        
-                              
+                        if(!treeBit.isEmpty()) {
+                            treeBit.preOrder(treeBit.root);
+                        } else {
+                            JOptionPane.showInputDialog(null, "Tree Bit empty");
+                        } 
                         break;
                     
                     case 4:
