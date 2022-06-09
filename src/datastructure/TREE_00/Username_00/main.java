@@ -21,12 +21,12 @@ public class main {
             
             do {
                 Option = Integer.parseInt(JOptionPane.showInputDialog(null, 
-                          "1. Add node\n "
-                        + "2. \n "
-                        + "3. \n "
-                        + "4. \n "
-                        + "5. \n "
-                        + "6. \n "
+                          "1. Add node\n"
+                        + "2. Iterate tree 'inOrder'\n"
+                        + "3. \n"
+                        + "4. \n"
+                        + "5. \n"
+                        + "6. \n"
                         + "7. Exit", 
                         "Menu option"));
                 switch(Option) {
@@ -41,7 +41,11 @@ public class main {
                         break;
                         
                     case 2:
-                        
+                        if(!treeBit.isEmpty()) {
+                            treeBit.inOrder(treeBit.root);
+                        } else {
+                            JOptionPane.showInputDialog(null, "Tree Bit empty");
+                        }
                         break;
                         
                     case 3:                        

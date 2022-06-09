@@ -42,4 +42,19 @@ public class TreeBit {
             }
         }
     }
+    
+    public boolean isEmpty() {
+        return this.root == null;
+    }
+    
+    /**
+     * Iterate 'inOrder'
+     */
+    public void inOrder(Node root) {
+        if(root != null) {
+            inOrder(root.childLeft);
+            System.out.println(root.Data);
+            inOrder(root.childRight);
+        }
+    }
 }
