@@ -82,4 +82,20 @@ public class TreeBit {
         }
     }
     
+    public Node searchNode(int data) {
+        Node auxiliary = this.root;
+        while(auxiliary.Data != data) {
+            if(data < auxiliary.Data) {
+                auxiliary = auxiliary.childLeft;
+            } else {
+                auxiliary = auxiliary.childRight;
+            }
+            if(auxiliary == null) {
+                return null;
+            }
+        }
+        
+        return auxiliary;
+    }
+    
 }

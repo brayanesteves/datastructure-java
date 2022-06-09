@@ -25,7 +25,7 @@ public class main {
                         + "2. Iterate tree 'inOrder'\n"
                         + "3. Iterate tree 'preOrder'\n"
                         + "4. Iterate tree 'postOrder'\n"
-                        + "5. \n"
+                        + "5. Search node in the tree\n"
                         + "6. \n"
                         + "7. Exit", 
                         "Menu option"));
@@ -65,7 +65,18 @@ public class main {
                         break;
                         
                     case 5:
-                                       
+                        if(!treeBit.isEmpty()) {
+                            item = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                                    "Enter number node search:", "Search node...", 
+                                    JOptionPane.INFORMATION_MESSAGE)); 
+                            if(treeBit.searchNode(item) == null) {
+                                JOptionPane.showMessageDialog(null, "Node [" + item + "] not exist in the tree");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Node [" + item + "] exist in the tree, data is " + treeBit.searchNode(item));
+                            }
+                        } else {
+                            JOptionPane.showInputDialog(null, "Tree Bit empty");
+                        }                 
                         break;
                         
                     case 6:                        
