@@ -26,7 +26,7 @@ public class main {
                         + "3. Iterate tree 'preOrder'\n"
                         + "4. Iterate tree 'postOrder'\n"
                         + "5. Search node in the tree\n"
-                        + "6. \n"
+                        + "6. Delete node in the tree\n"
                         + "7. Exit", 
                         "Menu option"));
                 switch(Option) {
@@ -80,7 +80,18 @@ public class main {
                         break;
                         
                     case 6:                        
-                        
+                        if(!treeBit.isEmpty()) {
+                            item = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                                    "Enter number node at delete:", "Delete node...", 
+                                    JOptionPane.INFORMATION_MESSAGE)); 
+                            if(!treeBit.delete(item)) {
+                                JOptionPane.showMessageDialog(null, "Node [" + item + "] not exist in the tree");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Node [" + item + "] exist in the tree, data is " + treeBit.delete(item));
+                            }
+                        } else {
+                            JOptionPane.showInputDialog(null, "Tree Bit empty");
+                        }      
                         break;
                         
                     case 7:
