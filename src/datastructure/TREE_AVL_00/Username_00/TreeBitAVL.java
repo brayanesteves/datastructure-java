@@ -1,5 +1,7 @@
 package datastructure.TREE_AVL_00.Username_00;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author brayan
@@ -9,6 +11,14 @@ public class TreeBitAVL {
     
     public TreeBitAVL() {
         this.root = null;
+    }
+    
+    public Node getRoot() {
+        return this.root;
+    }
+            
+    public boolean isEmpty() {
+        return this.root == null;
     }
     
     public Node search(int data, Node root) {
@@ -85,5 +95,102 @@ public class TreeBitAVL {
         node.childRight = this.rightRotation(node.childRight);
         auxiliary       = this.rightRotation(node);
         return auxiliary;
+    }
+    
+    public Node addAVL(Node newNode, Node subTree) {
+        Node newFather = subTree;
+        if(newFather.Data < subTree.Data) {
+            if(subTree.childLeft == null) {
+                subTree.childLeft = newFather;
+            } else {
+                subTree.childLeft = this.addAVL(newNode, subTree.childLeft);
+                if((this.getBalanceFactor(subTree.childLeft) - getBalanceFactor(subTree.childRight)) == 2) {
+                    if(newNode.Data < subTree.childLeft.Data) {
+                        newFather = this.leftRotation(subTree);
+                    } else {
+                        newFather = this.leftDoubleRotation(subTree);
+                    }
+                }
+            }
+        } else if(newNode.Data < subTree.Data) {
+            if(subTree.childRight == null) {
+                subTree.childRight = newNode;
+            } else {
+                subTree.childRight = this.addAVL(newNode, subTree.childRight);
+                if((this.getBalanceFactor(subTree.childRight) - this.getBalanceFactor(subTree.childLeft) == 2)) {
+                    if(newNode.Data > subTree.childRight.Data) {
+                        newFather = this.rightRotation(subTree);
+                    } else {
+                        newFather = this.rightDoubleRotation(subTree);
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Node duplicate");
+        }
+        // <.END 'IF'> 
+        /**
+         * Update Balancer Factor
+         */
+        if((subTree.childLeft == null) && (subTree.childRight != null)) {
+            subTree.BalanceFactor = subTree.childRight.BalanceFactor + 1;
+        } else if((subTree.childRight == null) && (subTree.childLeft != null)) {
+            subTree.BalanceFactor = subTree.childLeft.BalanceFactor + 1;
+        } else {
+            subTree.BalanceFactor = Math.max(this.getBalanceFactor(subTree.childLeft), 
+                    this.getBalanceFactor(subTree.childRight)) + 1;
+        }
+        
+        return newFather;
+    }
+    
+    public void add(int data) {
+        Node newData = new Node(data);
+        if(this.root == null) {
+            this.root = newData;
+        } else {
+            this.root = this.addAVL(newData, this.root);
+        }
+    }
+    
+        
+    /**
+     * Iterate 'inOrder'
+     */
+    public void inOrder(Node root) {
+        if(root != null) {
+            inOrder(root.childLeft);
+            JOptionPane.showMessageDialog(null, root.Data + ", ");
+            inOrder(root.childRight);
+        }
+    }
+    
+    /**
+     * Iterate 'preOrder'
+     * @param root 
+     */
+    public void preOrder(Node root) {
+        if(root != null) {
+            JOptionPane.showMessageDialog(null, root.Data + ", ");
+            preOrder(root.childLeft);            
+            preOrder(root.childRight);
+        }
+    }
+        
+    /**
+     * Iterate 'postOrder'
+     * @param root 
+     */
+    public void postOrder(Node root) {
+        if(root != null) {            
+            postOrder(root.childLeft);            
+            postOrder(root.childRight);
+            JOptionPane.showMessageDialog(null, root.Data + ", ");
+        }
+    }
+    
+    public boolean delete(int data) {
+        
+        return true;
     }
 }
