@@ -186,8 +186,7 @@ public class NaturalBlend {
                 k++;
             }
         }
-    }
-    
+    }    
         
     public void getArray(int activate, int option, int[] array) {
         int i = 0;

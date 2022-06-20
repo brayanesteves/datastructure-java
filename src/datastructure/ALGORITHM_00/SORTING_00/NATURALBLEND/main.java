@@ -11,7 +11,7 @@ public class main {
      */
     public static void main(String[] args) {
         NaturalBlend naturalBlend = new NaturalBlend();
-        int[] array = {22, 23, 30, 2, 5, 10, 8, 9, 13};
+        int[] array               = {22, 23, 30, 2, 5, 10, 8, 9, 13};
         
         naturalBlend.getArray(1, 0, array);
         naturalBlend.naturalBlend(array);
